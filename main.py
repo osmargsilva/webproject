@@ -1,27 +1,14 @@
-class ContaCorrente:
+from flask import Flask, render_template, url_for
+from flask_sqlalchemy import SQLAlchemy
 
-    def __init__(self, nome, cpf):
-        self.nome = nome
-        self.cpf = cpf
-        self.salto = 0
+app = Flask(__name__)
 
-    def extrado(self):
-        return f' seu saldo é R${self.salto:,.2f}'
+@app.route("/")
+def logim():
+    return render_template('login.html')
 
-    def depositar(self, deposito):
-        self.salto += deposito
-    
-    def sacar(self, saque):
-        if self.salto >= saque:
-            self.salto -=  saque
-            return f"Saque realizado com successo no valor R${saque:,.2f}"
-        else:
-            return self.extrado()
-    
+@app.route('/register')
+def cadastro():
+    return render_template('register.html')
 
-conta_a = ContaCorrente("osmar", "123456789")
-
-conta_a.depositar(750.50)
-
-print(conta_a.extrado())
-print(conta_a.sacar(790))
+app.run(host="0.0.0.0", port=5001, debug=True)

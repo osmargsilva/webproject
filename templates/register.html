@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro - Passo <span id="step-number">1</span>/3</h2>
+
+        <form id="multiStepForm" method="POST" enctype="multipart/form-data">
+            <!-- Etapa 1 -->
+            <div class="form-step active">
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="text" name="sobrenome" placeholder="Sobrenome" required>
+                <button type="button" class="next-step">Próximo</button>
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="form-step">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="senha" placeholder="Senha" required>
+                <button type="button" class="prev-step">Voltar</button>
+                <button type="button" class="next-step">Próximo</button>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="form-step">
+                <label class="file-input">
+                    <input type="file" name="imagem" accept="image/*">
+                    <p>Escolher Imagem</p>
+                </label>
+                <button type="button" class="prev-step">Voltar</button>
+                <button type="submit">Finalizar Cadastro</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
